@@ -6,7 +6,7 @@
 - [x] (8/10) Test connection to mongodb
 - [x] Create schema for astronomy
 - [x] Insert the fetch to database
-- [ ] Setup cache routine for fast retrival 
+- [x] Setup cache routine for fast retrival 
 - [ ] Setup rate limit 5 request per 10 minute
 - [ ] Deploy to heroku
 
