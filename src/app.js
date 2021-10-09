@@ -4,6 +4,7 @@ const helmet = require('helmet');
 const cors = require('cors');
 
 require('dotenv').config();
+require('mongoose').connect(process.env.MONGO_URL);
 
 const middlewares = require('./middlewares');
 const api = require('./api');
@@ -14,7 +15,6 @@ app.use(morgan('dev'));
 app.use(helmet());
 app.use(cors());
 app.use(express.json());
-
 app.get('/', (req, res) => {
   res.json({
     message: '🦄🌈✨👋🌎🌍🌏✨🌈🦄'

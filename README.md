@@ -1,33 +1,15 @@
-# Express API Starter
+# Astronomy API
 
-Credit to w3cj
-(https://www.github.com/w3cj)
+## Todo Main
+- [x] (8/10) Get NASA API 
+- [x] (8/10) Get database (mongo db)
+- [x] (8/10) Test connection to mongodb
+- [x] Create schema for astronomy
+- [x] Insert the fetch to database
+- [ ] Setup cache routine for fast retrival 
+- [ ] Setup rate limit 5 request per 10 minute
+- [ ] Deploy to heroku
 
-## Setup
-
-```
-npm install
-```
-
-## Lint
-
-```
-npm run lint
-```
-
-## Test
-
-```
-npm run test
-```
-
-## Development
-
-```
-npm run dev
-```
-
-## Run 
-```
-npm start
-```
+### Future (If had the time)
+- [ ] Deploy to Digital Ocean
+- [ ] Setup Domain name
