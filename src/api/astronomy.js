@@ -13,19 +13,19 @@ router.get('/', async (req, res, next) => {
   let date = moment().subtract(1, 'days')
   .format('YYYY-MM-DD');
   
-  let imageCache = cache.get(date) || await astromony.getDailyImageDb();
-  if (imageCache){
-    cache.set(date, imageCache, 86400);
-    res.json(imageCache);
-    return;
-  } 
-
   try {
-    const imageData = await astromony.getDailyImage();
+
+    let imageCache = cache.get(date) || await astromony.getDailyImageDb();
+    if (imageCache){
+      cache.set(date, imageCache, 86400);
+      res.json(imageCache);
+      return;
+    } 
+
+    let imageData = await astromony.getDailyImage();
     await astromony.insertDailyImage(imageData);
-   
     cache.set(date, imageData, 86400);
-   
+
     res.json(imageData);
   } catch (error) {
     next(error)
