@@ -4,7 +4,7 @@ const AstroModel = require('../model/astronomy');
 
 const { NASA_URL } =  process.env;
 
-const getDailyImageDb = _ => {
+module.exports.getDailyImageDb = _ => {
     return new Promise( async (resolve, reject) => {
         try {
             let date = moment().subtract(1, 'days').format('YYYY-MM-DD');
@@ -23,7 +23,7 @@ const getDailyImageDb = _ => {
     });
 }
 
-const getDailyImage =  _ => {
+module.exports.getDailyImage =  _ => {
     return new Promise( async (resolve, reject) => {
         try {
             let date = moment().subtract(1, 'days').format('YYYY-MM-DD');
@@ -38,19 +38,30 @@ const getDailyImage =  _ => {
     });
 }
 
-const insertDailyImage = data => {
+module.exports.insertDailyImage = data => {
     return new Promise( async (resolve, reject) => {
         try {
-            let save = await new AstroModel(data).save();
+            let save = await AstroModel(data).save();
             resolve(save);
         } catch (error) {
-            reject(error)
+            reject(error);
         }
     })
 }
 
-module.exports = {
-    getDailyImage,
-    insertDailyImage,
-    getDailyImageDb
+module.exports.isLiked = data =>{
+    return new Promise(async(resolve, reject)=>{
+        try{
+
+            let liked = await AstroModel.updateOne({
+                hdurl: data.hdurl
+            }, {
+                isLiked: data.isLiked
+            });
+            
+            resolve(liked);           
+        }catch (error){
+            reject(error);
+        }
+    })
 }

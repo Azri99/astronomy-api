@@ -33,4 +33,17 @@ router.get('/', async (req, res, next) => {
 
 });
 
+router.post('/isliked', async (req, res, next)=>{
+  try{
+   
+    let isLiked = await astromony.isLiked(req.body);
+    res.json(isLiked);
+  
+  }catch(e){
+  
+    next(error)
+  
+  }
+});
+
 module.exports = router;

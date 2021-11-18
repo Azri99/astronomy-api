@@ -9,7 +9,8 @@ require('mongoose').connect(process.env.MONGO_URL)
   console.log('mongo conn')  
 })
 .catch((e)=>{
-  console.log(e)
+  
+  console.log('noooo')
   
 })
 
